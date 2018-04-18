@@ -1,3 +1,18 @@
+//Different colors for different emotions
+window.bColor = {
+    red: 'rgb(230, 25, 75)',
+    green: 'rgb(60,180,75)',
+	orange: 'rgb(245, 130, 48)',
+	yellow: 'rgb(255, 225, 25)',
+    blue: '#0082c8'
+}
+
+//Hide the video screen
+$(document).ready(function(){
+    $('#affdex_elements').hide();
+
+});
+
 // SDK Needs to create video and canvas nodes in the DOM in order to function
 // Here we are adding those nodes a predefined div.
 var divRoot = $("#affdex_elements")[0];
@@ -27,11 +42,11 @@ function log(node_name, msg) {
 
 //function executes when Start button is pushed.
 function onStart() {
-  if (detector && !detector.isRunning) {
-    $("#logs").html("");
-    detector.start();
-  }
-  log('#logs', "Clicked the start button");
+    if (detector && !detector.isRunning) {
+        $("#logs").html("");
+        detector.start();
+    }
+    log('#logs', "Clicked the start button");
 }
 
 //function executes when the Stop button is pushed.
@@ -80,21 +95,28 @@ detector.addEventListener("onImageResultsSuccess", function(faces, image,
   log('#results', "Timestamp: " + timestamp.toFixed(2));
   log('#results', "Number of faces found: " + faces.length);
   if (faces.length > 0) {
-    // Gets gender, age, facial features
-    log('#results', "Appearance: " + JSON.stringify(faces[0].appearance));
-
     log('#results', "Emotions: " + JSON.stringify(faces[0].emotions,
       function(key, val) {
-        return val.toFixed ? Number(val.toFixed(0)) : val;
+          return val.toFixed ? Number(val.toFixed(0)) : val;
       }));
-    log('#results', "Expressions: " + JSON.stringify(faces[0].expressions,
+      log('#results', "Expressions: " + JSON.stringify(faces[0].expressions,
       function(key, val) {
-        return val.toFixed ? Number(val.toFixed(0)) : val;
+          return val.toFixed ? Number(val.toFixed(0)) : val;
       }));
 
-    // Return an emoji of face
-    log('#results', "Emoji: " + faces[0].emojis.dominantEmoji);
-    drawFeaturePoints(image, faces[0].featurePoints);
+      // Return an emoji of face
+      log('#results', "Emoji: " + faces[0].emojis.dominantEmoji);
+      //drawFeaturePoints(image, faces[0].featurePoints);
+      
+      if(faces[0].emotions.joy > 75){
+          $('body').css("background-color","yellow");
+      }else if(faces[0].emotions.anger > 75){
+          $('body').css("background-color","red");
+      }else if(faces[0].emotions.surprise > 75){
+          $('body').css("background-color","blue");
+      }else{
+          $('body').css("background-color","white");
+      }
   }
 });
 
