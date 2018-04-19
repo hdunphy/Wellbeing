@@ -43,24 +43,6 @@ img {vertical-align: middle;}
   background-color: #717171;
 }
 
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
   .text {font-size: 11px}
@@ -84,16 +66,16 @@ img {vertical-align: middle;}
             
             <!-- Slide show stuff  -->
             <div class="slideshow-container">
-
-            <div class="mySlides fade">
+<!--            First image-->
+            <div class="mySlides">
               <img src="data/fullyCharged.jpg" style="width:100%">
             </div>
-
-            <div class="mySlides fade">
+<!--            Second image-->
+            <div class="mySlides">
               <img src="data/fearedLoved.jpg" style="width:100%">
             </div>
-
-            <div class="mySlides fade">
+<!--                third image-->
+            <div class="mySlides">
               <img src="data/age.jpg" style="width:100%">
             </div>
 

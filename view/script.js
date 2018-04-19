@@ -14,7 +14,7 @@ function showSlides() {
     }
     slides[slideIndex-1].style.display = "block";  
     dots[slideIndex-1].className += " active";
-    setTimeout(showSlides, 5000); // Change image every 2 seconds
+    setTimeout(showSlides, 5000); // Change image every 5 seconds
 }
 
 //Hide the video screen
@@ -134,8 +134,13 @@ detector.addEventListener("onImageResultsSuccess", function(faces, image,
           $('p').css("color","white");
           $('.gameText').hide();
           $('#notHappy').show();
-      }else if(faces[0].emotions.surprise > 75){
+      }else if(faces[0].emotions.sad > 75){
           $('body').css("background-color","blue");
+          $('p').css("color","white");
+          $('.gameText').hide();
+          $('#notHappy').show();
+      }else if(faces[0].emotions.surprise > 75){
+          $('body').css("background-color","orange");
           $('p').css("color","white");
           $('.gameText').hide();
           $('#notHappy').show();
