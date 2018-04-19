@@ -1,3 +1,5 @@
+/* OLD CODE
+
 // SDK Needs to create video and canvas nodes in the DOM in order to function
 // Here we are adding those nodes a predefined div.
 var divRoot = $("#affdex_elements")[0];
@@ -9,16 +11,11 @@ var detector = new affdex.CameraDetector(divRoot, width, height, faceMode);
 
 //Enable detection of all Expressions, Emotions and Emojis classifiers.
 detector.detectAllEmotions();
-detector.detectAllExpressions();
-detector.detectAllEmojis();
-detector.detectAllAppearance();
 
 //Add a callback to notify when the detector is initialized and ready for runing.
 detector.addEventListener("onInitializeSuccess", function() {
   log('#logs', "The detector reports initialized");
-  //Display canvas instead of video feed because we want to draw the feature points on it
-  $("#face_video_canvas").css("display", "block");
-  $("#face_video").css("display", "none");
+  $(".camera").hide();
 });
 
 function log(node_name, msg) {
@@ -80,38 +77,22 @@ detector.addEventListener("onImageResultsSuccess", function(faces, image,
   log('#results', "Timestamp: " + timestamp.toFixed(2));
   log('#results', "Number of faces found: " + faces.length);
   if (faces.length > 0) {
-    // Gets gender, age, facial features
-    log('#results', "Appearance: " + JSON.stringify(faces[0].appearance));
-
-    log('#results', "Emotions: " + JSON.stringify(faces[0].emotions,
+    log('#results', "Emotions: " + JSON.stringify(faces[0].emotions.joy,
       function(key, val) {
         return val.toFixed ? Number(val.toFixed(0)) : val;
       }));
-    log('#results', "Expressions: " + JSON.stringify(faces[0].expressions,
-      function(key, val) {
-        return val.toFixed ? Number(val.toFixed(0)) : val;
-      }));
-
-    // Return an emoji of face
-    log('#results', "Emoji: " + faces[0].emojis.dominantEmoji);
-    drawFeaturePoints(image, faces[0].featurePoints);
   }
 });
+*/
 
-//Draw the detected facial feature points on the image
-function drawFeaturePoints(img, featurePoints) {
-  var contxt = $('#face_video_canvas')[0].getContext('2d');
 
-  var hRatio = contxt.canvas.width / img.width;
-  var vRatio = contxt.canvas.height / img.height;
-  var ratio = Math.min(hRatio, vRatio);
+$("#images > div:gt(0)").hide();
 
-  contxt.strokeStyle = "#FFFFFF";
-  for (var id in featurePoints) {
-    contxt.beginPath();
-    contxt.arc(featurePoints[id].x,
-      featurePoints[id].y, 2, 0, 2 * Math.PI);
-    contxt.stroke();
-
-  }
-}
+setInterval(function() { 
+  $('#images > div:first')
+  .fadeOut(1000)
+  .next()
+  .fadeIn(1000)
+  .end()
+  .appendTo('#images');
+}, 2000);

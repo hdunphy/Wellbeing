@@ -16,5 +16,5 @@ app.get("/", (req, res) => {
 app.listen(WEB_PORT, () => {
 	// Note the quotation marks - it's a template string literal in JavaScript
 	// You can do stuff like ${2+2} and it will evaluate the expressions
-	console.log(`WebApp listening on port ${WEB_PORT}`);
+	console.log(`Wellbeing app listening on port ${WEB_PORT}`);
 });
