@@ -19,7 +19,7 @@ function showSlides() {
 
 //Hide the video screen
 $(document).ready(function(){
-    $('#affdex_elements').hide();
+//    $('#affdex_elements').hide();
     //$('#video').hide();
     $('.gameText').hide();
     $('#dots').hide();
@@ -29,8 +29,8 @@ $(document).ready(function(){
 // SDK Needs to create video and canvas nodes in the DOM in order to function
 // Here we are adding those nodes a predefined div.
 var divRoot = $("#affdex_elements")[0];
-var width = 680;
-var height = 480;
+var width = 170;
+var height = 120;
 var faceMode = affdex.FaceDetectorMode.LARGE_FACES;
 //Construct a CameraDetector and specify the image width / height and face detector mode.
 var detector = new affdex.CameraDetector(divRoot, width, height, faceMode);
