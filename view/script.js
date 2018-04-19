@@ -111,14 +111,33 @@ detector.addEventListener("onImageResultsSuccess", function(faces, image,
   log('#results', "Timestamp: " + timestamp.toFixed(2));
   log('#results', "Number of faces found: " + faces.length);
   if (faces.length > 0) {
-    log('#results', "Emotions: " + JSON.stringify(faces[0].emotions,
-      function(key, val) {
-          return val.toFixed ? Number(val.toFixed(0)) : val;
-      }));
-      log('#results', "Expressions: " + JSON.stringify(faces[0].expressions,
-      function(key, val) {
-          return val.toFixed ? Number(val.toFixed(0)) : val;
-      }));
+      var joy = faces[0].emotions.joy;
+      joy = joy.toFixed(2);
+      joy = Math.round(joy);
+      log('#results', "Joy: " + joy);
+      
+      var anger = faces[0].emotions.anger;
+      anger = anger.toFixed(2);
+      anger = Math.round(anger);
+      log('#results', "anger: " + anger);
+      
+      var sad = faces[0].emotions.sadness;
+      sad = sad.toFixed(2);
+      sad = Math.round(sad);
+      log('#results', "Sadness: " + sad);
+      
+      var surprise = faces[0].emotions.surprise;
+      surprise = surprise.toFixed(2);
+      surprise = Math.round(surprise);
+      log('#results', "Surprise: " + surprise);
+//    log('#results', "Emotions: " + JSON.stringify(faces[0].emotions,
+//      function(key, val) {
+//          return val.toFixed ? Number(val.toFixed(0)) : val;
+//      }));
+//      log('#results', "Expressions: " + JSON.stringify(faces[0].expressions,
+//      function(key, val) {
+//          return val.toFixed ? Number(val.toFixed(0)) : val;
+//      }));
 
       // Return an emoji of face
       log('#results', "Emoji: " + faces[0].emojis.dominantEmoji);
@@ -150,6 +169,8 @@ detector.addEventListener("onImageResultsSuccess", function(faces, image,
           $('.gameText').hide();
           $('#serious').show();
       }
+  }else{
+      log('#results', "No Faces detected");
   }
 });
 
