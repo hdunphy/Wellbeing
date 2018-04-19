@@ -1,15 +1,28 @@
-//Different colors for different emotions
-window.bColor = {
-    red: 'rgb(230, 25, 75)',
-    green: 'rgb(60,180,75)',
-	orange: 'rgb(245, 130, 48)',
-	yellow: 'rgb(255, 225, 25)',
-    blue: '#0082c8'
+var slideIndex = 0;
+
+function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    for (i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";  
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}    
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active";
+    setTimeout(showSlides, 5000); // Change image every 2 seconds
 }
 
 //Hide the video screen
 $(document).ready(function(){
     $('#affdex_elements').hide();
+    //$('#video').hide();
+    $('.gameText').hide();
+    $('#dots').hide();
 
 });
 
@@ -47,6 +60,9 @@ function onStart() {
         detector.start();
     }
     log('#logs', "Clicked the start button");
+    //$('#video').show();
+    showSlides();
+    $('#dots').show();
 }
 
 //function executes when the Stop button is pushed.
@@ -110,12 +126,24 @@ detector.addEventListener("onImageResultsSuccess", function(faces, image,
       
       if(faces[0].emotions.joy > 75){
           $('body').css("background-color","yellow");
+          $('p').css("color","black");
+          $('.gameText').hide();
+          $('#happy').show();
       }else if(faces[0].emotions.anger > 75){
           $('body').css("background-color","red");
+          $('p').css("color","white");
+          $('.gameText').hide();
+          $('#notHappy').show();
       }else if(faces[0].emotions.surprise > 75){
           $('body').css("background-color","blue");
+          $('p').css("color","white");
+          $('.gameText').hide();
+          $('#notHappy').show();
       }else{
           $('body').css("background-color","white");
+          $('p').css("color","black");
+          $('.gameText').hide();
+          $('#serious').show();
       }
   }
 });

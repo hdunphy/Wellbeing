@@ -1,21 +1,75 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- import jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- import jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<!--import default Affectiva CSS code-->
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" />
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <!--import default Affectiva CSS code-->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
 
-<!--import custom CSS-->
-<link rel="stylesheet" href="style.css">
+    <!--import custom CSS-->
+    <link rel="stylesheet" href="style.css">
 
-<!--import Affectiva javascript support-->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="https://download.affectiva.com/js/3.2/affdex.js"></script>
+    <!--import Affectiva javascript support-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://download.affectiva.com/js/3.2/affdex.js"></script>
+    
+<style>
+* {box-sizing: border-box;}
+    .gameText {font-size: xx-large;}
+.mySlides {display: none;}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 300px;
+  position: relative;
+  margin-left: 10%;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+</style>
 </head>
 <body>
+
+    
     <!-- the entire window container -->
     <div class="container-fluid">
 
@@ -26,8 +80,34 @@
         <!-- camera container: col-md-8 (child) & affdex_elements (parent selector) -->
         <div class="col-md-8" id="affdex_elements" style="width:680px;height:480px;"></div>
         
-        <div id="video" class="col-md-8">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/2eHNr8XnXaI?rel=0" frameborder="0" allow="autoplay; encrypted-media"></iframe>
+        <div class="col-md-8">
+            
+            <!-- Slide show stuff  -->
+            <div class="slideshow-container">
+
+            <div class="mySlides fade">
+              <img src="data/fullyCharged.jpg" style="width:100%">
+            </div>
+
+            <div class="mySlides fade">
+              <img src="data/fearedLoved.jpg" style="width:100%">
+            </div>
+
+            <div class="mySlides fade">
+              <img src="data/age.jpg" style="width:100%">
+            </div>
+
+            </div>
+            <br>
+
+            <div id="dots" style="margin-left: 17%">
+              <span class="dot"></span> 
+              <span class="dot"></span> 
+              <span class="dot"></span> 
+            </div>
+            
+<!--            If we want to use a video instead-->
+<!--            <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/2eHNr8XnXaI?rel=0" frameborder="0" allow="autoplay; encrypted-media"></iframe>-->
         
         </div>
         <!-- "emotion tracking results" and "detector log msgs" container -->
@@ -57,15 +137,23 @@
             <strong>Instructions</strong>
             <br/>
             Press the start button to start the detector.
-            <br/> When a face is detected, the probabilities of the different emotions are written to the DOM.
+            <br/> When a face is detected, the website will cater images due to your current mood.
             <br/> Press the stop button to end the detector.
         </p>
+            <br>
+            <br>
     </div>
     <!-- END: BOTTOM half of SCREEN container -->
-
-
+    
+    <!-- Contain the text for the game -->
+        <div id="game">
+            <p class="gameText" id="serious"><strong>Why so serious?</strong></p>
+            <p class="gameText" id="happy"><strong>Good to see you are in a good mood</strong></p>
+            <p class="gameText" id="notHappy"><strong>Hey let me cheer you up!</strong></p>
+        </div>
     </div>
     <!-- END: ENTIRE SCREEN container -->
+
     
 <script src="script.js"></script>
 </body>

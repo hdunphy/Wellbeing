@@ -1,7 +1,8 @@
-body {
-    /*background-color: aliceblue */
+div.game{
+    margin: auto;
+    width: 400px;
 }
 
-#col-md-4{
-    background-color: orange
+#gameText{
+    font-size: 40px;
 }
