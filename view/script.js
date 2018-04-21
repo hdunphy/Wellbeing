@@ -1,11 +1,11 @@
-const phase1 = ["/img/1.gif",
-                "/img/2.gif",
-                "/img/3.gif",
-                "/img/4.gif"];
-const phase2 = ["/img/5.gif",
-                "/img/6.gif",
-                "/img/7.gif",
-                "/img/8.gif"];               
+const phase1 = ["img/1.gif",
+                "img/2.gif",
+                "img/3.gif",
+                "img/4.gif"];
+const phase2 = ["img/5.gif",
+                "img/6.gif",
+                "img/7.gif",
+                "img/8.gif"];               
 
 var divRoot = $("#camera")[0];
 
@@ -45,8 +45,8 @@ $('document').ready(function(){
 */
 function toggleGame() {
   if (!gameRunning){
-    $("#images").show();
-    $("#images").css("visibility", "visible");
+      
+      console.log("pressed start");
     if (detector && !detector.isRunning) { 
       detector.start();
       console.log('started');
@@ -59,7 +59,9 @@ function toggleGame() {
     $("#score-counter").css("background-color", "white");
   }
   else {
+      console.log("pressed quit");
     $("#images").hide();
+    $("#images").css("visibility", "hidden");
     detector.stop();
     gameRunning = false;
     score = 0;
@@ -68,6 +70,12 @@ function toggleGame() {
     $("#score-counter").css("background-color", "white");
     $(".log").html("Game stopped!");
   }
+}
+
+function runGame(){
+    
+    $("#images").show();
+    $("#images").css("visibility", "visible");
 }
 
 /*
@@ -142,7 +150,8 @@ function triggerEndGame(time_stamp) {
   gameRunning = false;
   score = 0;
   $("#button").html("Restart");
-  $("#images").css("visibility", "hidden");
+    $("#images").hide();
+    $("#images").css("visibility", "hidden");
   $(".log").html("You lost! Good luck next time!");
   detector.stop();
 }
@@ -158,15 +167,22 @@ detector.addEventListener("onImageResultsFailure", function (image, timestamp, e
 });
 
 detector.addEventListener("onImageResultsSuccess", function (faces, image, timestamp) {
-  // print out a message if no face is detected!
-  console.log('Score: ' + score);
+  if (faces.length > 0) {
+      runGame();
+          // print out a message if no face is detected!
+      console.log('Score: ' + score);
 
-  // count the score with each successful joy detect
-  var joy = faces[0].emotions.joy;
-  joy = joy.toFixed(2);
-  joy = Math.round(joy);
+      // count the score with each successful joy detect
+      var joy = faces[0].emotions.joy;
+      joy = joy.toFixed(2);
+      joy = Math.round(joy);
 
-  checkScore(joy, timestamp);
+      checkScore(joy, timestamp);
 
-  console.log(joy);
+      console.log(joy);
+  }
+    else{
+        
+    }
+
 });
