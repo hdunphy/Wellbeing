@@ -22,10 +22,6 @@
     <!-- the entire window container -->
     <div class="container-fluid">
 
-
-    <!--START: container for top half of window; goes from above the start/stop/reset buttons to the top of screen -->
-    <div class="row">
-
         
         <div class="top center">
 
@@ -46,41 +42,16 @@
 
                 </div>
 
-            </div>
-        
-        
-        
-        <div class="col-md-8">
-
-            
-<!--            If we want to use a video instead-->
-<!--            <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/2eHNr8XnXaI?rel=0" frameborder="0" allow="autoplay; encrypted-media"></iframe>-->
-        
         </div>
-        <!-- "emotion tracking results" and "deStector log msgs" container -->
-        <div class="right-box">
+        
 
-        <!-- "emotion tracking results" container: title & results -->
-        <div style="height:20em;"> <!-- height controls the height of the emotion tracking results container -->
-            <strong>EMOTION TRACKING RESULTS</strong>
-            <!-- subcontainer that displays the detected emotions -->
-            <div id="results" style="word-wrap:break-word;"></div>
-        </div>
-
-            <!-- camera container: col-md-8 (child) & affdex_elements (parent selector) -->
-            <div class="col-md-8" id="affdex_elements" style="width:170px;height:120px;"></div>
-
-        </div>
-        <!-- END of RIGHT SIDE container– the emotion tracking results and detector log msgs -->
-
-        </div>
         <!-- END of UPPER SCREEN container– camera & logs -->
 
-            <div class="bottom center">
-                <button class="center" id="button" onclick="onStart()">Start</button>
-                <br><br>
-                <div class="progress-bar center"></div>
-            </div>
+        <div class="bottom center">
+            <button class="center" id="button" onclick="onStart()">Start</button>
+            <br><br>
+            <div class="progress-bar center"></div>
+        </div>
         <br>
         <br>
 
