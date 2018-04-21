@@ -4,25 +4,20 @@
 <!-- import jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<!--import default Affectiva CSS code-->
-<!--
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" />
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
--->
-
 <!--import custom CSS-->
 <link rel="stylesheet" href="style.css">
 
 <!--import Affectiva javascript support
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="https://download.affectiva.com/js/3.2/affdex.js"></script>
 -->
+<script src="https://download.affectiva.com/js/3.2/affdex.js"></script>
 
 </head>
 <body>
     <!-- the entire window container -->
     <div class="window-full">
 
+    <div id="camera"></div>
 
     <!--START: container for top half of window -->
     <div class="top center">
@@ -30,16 +25,16 @@
         <!-- div where images will be shown -->
         <div class="center" id="images">
             <div>
-                <img src="/img/1.jpg">
+                <img id="pic1" src="/img/1.gif">
            </div>
            <div>
-               <img src="/img/2.jpg">
+               <img id="pic2" src="/img/2.gif">
            </div>
            <div>
-               <img src="/img/3.jpg">
+               <img id="pic3" src="/img/3.gif">
            </div>
            <div>
-               <img src="/img/4.jpg">
+               <img id="pic4" src="/img/4.gif">
            </div>
 
         </div>
@@ -50,9 +45,16 @@
 
     <!-- START: container that holds bottom half of screen-->
     <div class="bottom center">
-        <button class="center" id="button">Start</button>
+        <br>
+        <br>
+        <div class="center log"><h3 class="center">Welcome to You Laugh You Loose! Click start to begin!</h3></div>
+        <br>
+
+        <button class="center" id="button" onclick="toggleGame()">Start</button>
         <br><br>
-        <div class="progress-bar center"></div>
+        <div class="progress-bar center">
+            <div class="center" id="score-counter"></div>
+        </div>
     </div>
     <!-- END: BOTTOM half of SCREEN container -->
 
@@ -60,6 +62,7 @@
     </div>
     <!-- END: ENTIRE SCREEN container -->
     
-<script src="script.js"></script>
+
+    <script src="script.js"></script>
 </body>
 </html>
