@@ -5,8 +5,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!--import default Affectiva CSS code-->
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" />
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+<!--    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" />-->
+<!--    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />-->
 
     <!--import custom CSS-->
     <link rel="stylesheet" href="style.css">
@@ -15,45 +15,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="https://download.affectiva.com/js/3.2/affdex.js"></script>
     
-<style>
-* {box-sizing: border-box;}
-    #game {
-        border: 2px solid red;
-        border-radius: 5px;
-        text-align: center;
-        height: 55px;
-    }
-    .gameText {font-size: xx-large;}
-.mySlides {display: none;}
-img {vertical-align: middle;}
-
-/* Slideshow container */
-.slideshow-container {
-  max-width: 300px;
-  position: relative;
-  margin-left: 10%;
-}
-
-/* The dots/bullets/indicators */
-.dot {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active {
-  background-color: #717171;
-}
-
-/* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-  .text {font-size: 11px}
-}
-</style>
 </head>
 <body>
 
@@ -66,50 +27,38 @@ img {vertical-align: middle;}
     <div class="row">
 
         
+        <div class="top center">
+
+                <!-- div where images will be shown -->
+                <div class="center" id="images">
+                    <div>
+                        <img src="data/age.jpg">
+                   </div>
+                   <div>
+                       <img src="data/fearedLoved.jpg">
+                   </div>
+                   <div>
+                       <img src="data/insideJoke.jpg">
+                   </div>
+                   <div>
+                       <img src="data/internetexplorer.jpg">
+                   </div>
+
+                </div>
+
+            </div>
+        
+        
+        
         <div class="col-md-8">
-            
-            <!-- Slide show stuff  -->
-            <div class="slideshow-container">
-<!--            First image-->
-            <div class="mySlides">
-              <img src="data/fullyCharged.jpg" style="width:100%">
-            </div>
-<!--            Second image-->
-            <div class="mySlides">
-              <img src="data/fearedLoved.jpg" style="width:100%">
-            </div>
-<!--                third image-->
-            <div class="mySlides">
-              <img src="data/age.jpg" style="width:100%">
-            </div>
-<!--                fourth image-->
-            <div class="mySlides">
-              <img src="data/internetexplorer.jpg" style="width:100%">
-            </div>
-<!--                fifth image-->
-            <div class="mySlides">
-              <img src="data/insideJoke.jpg" style="width:100%">
-            </div>
-
-            <br>
-
-            <div id="dots" style="margin-left: 20%">
-              <span class="dot"></span> 
-              <span class="dot"></span> 
-              <span class="dot"></span> 
-              <span class="dot"></span>  
-              <span class="dot"></span> 
-            </div>
-                
-            </div>
 
             
 <!--            If we want to use a video instead-->
 <!--            <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/2eHNr8XnXaI?rel=0" frameborder="0" allow="autoplay; encrypted-media"></iframe>-->
         
         </div>
-        <!-- "emotion tracking results" and "detector log msgs" container -->
-        <div class="col-md-4">
+        <!-- "emotion tracking results" and "deStector log msgs" container -->
+        <div class="right-box">
 
         <!-- "emotion tracking results" container: title & results -->
         <div style="height:20em;"> <!-- height controls the height of the emotion tracking results container -->
@@ -127,23 +76,14 @@ img {vertical-align: middle;}
         </div>
         <!-- END of UPPER SCREEN container– camera & logs -->
 
+            <div class="bottom center">
+                <button class="center" id="button" onclick="onStart()">Start</button>
+                <br><br>
+                <div class="progress-bar center"></div>
+            </div>
+        <br>
+        <br>
 
-        <!-- START: container that holds bottom half of screen– start/stop/reset buttons, Affectiva detector title, instructions -->
-        <div>
-            <button id="start" onclick="onStart()">Start</button>
-            <button id="stop" onclick="onStop()">Stop</button>
-            <button id="reset" onclick="onReset()">Reset</button>
-            <h3>Affectiva JS SDK CameraDetector to track different emotions.</h3>
-        <p>
-            <strong>Instructions</strong>
-            <br/>
-            Press the start button to start the detector.
-            <br/> When a face is detected, the website will cater images due to your current mood.
-            <br/> Press the stop button to end the detector.
-        </p>
-            <br>
-            <br>
-    </div>
     <!-- END: BOTTOM half of SCREEN container -->
     
     <!-- Contain the text for the game -->

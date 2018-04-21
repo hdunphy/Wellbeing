@@ -1,28 +1,20 @@
-var slideIndex = 0;
+$("#images > div:gt(0)").hide();
 
-function showSlides() {
-    var i;
-    var slides = document.getElementsByClassName("mySlides");
-    var dots = document.getElementsByClassName("dot");
-    for (i = 0; i < slides.length; i++) {
-       slides[i].style.display = "none";  
-    }
-    slideIndex++;
-    if (slideIndex > slides.length) {slideIndex = 1}    
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex-1].style.display = "block";  
-    dots[slideIndex-1].className += " active";
-    setTimeout(showSlides, 5000); // Change image every 5 seconds
-}
+setInterval(function() { 
+  $('#images > div:first')
+  .fadeOut(1000)
+  .next()
+  .fadeIn(1000)
+  .end()
+  .appendTo('#images');
+}, 2000);
 
 //Hide the video screen
 $(document).ready(function(){
-//    $('#affdex_elements').hide();
+    //$('#affdex_elements').hide();
     //$('#video').hide();
     $('.gameText').hide();
-    $('#dots').hide();
+//    $('#dots').hide();
 
 });
 
@@ -31,7 +23,7 @@ $(document).ready(function(){
 var divRoot = $("#affdex_elements")[0];
 var width = 170;
 var height = 120;
-var faceMode = affdex.FaceDetectorMode.LARGE_FACES;
+var faceMode = affdex.FaceDetectorMode.SMALL_FACES;
 //Construct a CameraDetector and specify the image width / height and face detector mode.
 var detector = new affdex.CameraDetector(divRoot, width, height, faceMode);
 
@@ -61,8 +53,8 @@ function onStart() {
     }
     log('#logs', "Clicked the start button");
     //$('#video').show();
-    showSlides();
-    $('#dots').show();
+    //showSlides();
+    //$('#dots').show();
 }
 
 //function executes when the Stop button is pushed.
